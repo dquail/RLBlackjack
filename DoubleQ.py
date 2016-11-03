@@ -76,7 +76,15 @@ def learn(alpha, eps, numTrainingEpisodes):
             #blackjack.printPolicy(policy)
 
     print("Average total return so far: ", returnSum/numTrainingEpisodes)
-    plt.plot(evalSteps)
+    fig = plt.figure()
+    fig.suptitle('Learning rate for blackjack', fontsize = 14, fontweight = 'bold')
+    ax = fig.add_subplot(111)
+    
+    titleLabel = "alpha:" + str(alpha) + ", eps:" + str(eps) + ", runs:" + str(numTrainingEpisodes)
+    ax.set_title(titleLabel)
+    ax.set_xlabel('episode')
+    ax.set_ylabel('cumulative avg. return')
+    ax.plot(evalSteps)
     plt.show()
 
 def simpleEvaluate(numEvaluationEpisodes):
