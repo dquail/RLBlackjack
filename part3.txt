@@ -1,4 +1,4 @@
-alpha=
-eps=
-numTrainingEpisodes=
-avgReturn=
+alpha=0.02
+eps=0.01
+numTrainingEpisodes=1000001
+avgReturn=-0.04

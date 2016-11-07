@@ -11,9 +11,10 @@ def run(numEvaluationEpisodes):
         terminated = False
         
         while(not terminated):
-            blackjack.printState(currentState)
+            #blackjack.printState(currentState)
             
             action = randint(0,2)
+            """
             if (currentState > 0):
                 if (action == 0):
                     print("Action: Stay")
@@ -21,7 +22,7 @@ def run(numEvaluationEpisodes):
                     print("Action: Hit")
             else:
                 print("Action: Hit (until 10 or more)")
-                
+            """
             transitionTuple = blackjack.sample(currentState, action)
             newState = transitionTuple[1]
 
@@ -30,11 +31,13 @@ def run(numEvaluationEpisodes):
             if (currentState == False):
                 G = reward
                 terminated = True
-                print("Finished episode with reward: " + str(G))
+                #print("Finished episode with reward: " + str(G))
             
-            
+        """
         print("Episode: ", episodeNum, "Return: ", G)
         print("=======================")    
         print("")
+        """    
         returnSum = returnSum + G
+        
     return returnSum / numEvaluationEpisodes

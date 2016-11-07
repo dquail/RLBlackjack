@@ -110,3 +110,10 @@ def printPolicy(policy):
             print(playerSum)
         for dealerCard in range(1,11): print(dealerCard, end=' ')
         print() 
+        
+
+def printPolicyToFile(policy):
+    with open('policy.txt', 'w') as fp:
+        sys.stdout = fp
+        printPolicy(policy)
+        sys.stdout = sys.__stdout__

@@ -71,11 +71,13 @@ def learn(alpha, eps, numTrainingEpisodes):
         returnSum = returnSum + G
    
         if episodeNum % 10000 == 0 and episodeNum != 0:
-            print("Average return so far: ", returnSum/episodeNum)
+            #print("Average return so far: ", returnSum/episodeNum)
             evalSteps.append(returnSum/episodeNum)
             #blackjack.printPolicy(policy)
 
-    print("Average total return so far: ", returnSum/numTrainingEpisodes)
+    
+    #print("Average total return so far: ", returnSum/numTrainingEpisodes)
+    """
     fig = plt.figure()
     fig.suptitle('Learning rate for blackjack', fontsize = 14, fontweight = 'bold')
     ax = fig.add_subplot(111)
@@ -86,6 +88,8 @@ def learn(alpha, eps, numTrainingEpisodes):
     ax.set_ylabel('cumulative avg. return')
     ax.plot(evalSteps)
     plt.show()
+    """
+    #return returnSum/numTrainingEpisodes
 
 def simpleEvaluate(numEvaluationEpisodes):
     learn(0.0, 0.0, numEvaluationEpisodes)
@@ -115,13 +119,28 @@ def evaluate(numEvaluationEpisodes):
                 terminated = True
             
         returnSum = returnSum + G
-   
+        """
         if episodeNum % 10000 == 0 and episodeNum != 0:
             print("Average return so far: ", returnSum/episodeNum)
-
-    print("Average total return so far: ", returnSum/numEvaluationEpisodes)
+        """
+    #print("Average total return so far: ", returnSum/numEvaluationEpisodes)
     return returnSum/numEvaluationEpisodes
 
+def runTests(numberOfTrainingRuns):
+    alpha = 0.01
+    while (alpha < 0.1):
+        eps = 0.01
+        while (eps < 0.1):
+            resetQs()
+            avg = learn(alpha, eps, numberOfTrainingRuns)
+            print("==== Alpha: " + str(alpha) + ", eps: " + str(eps) + ", Avg: " + str(avg))
+            eps = eps + 0.01
+        alpha = alpha + 0.01
+            
+            
+def resetQs():
+    Q1 = numpy.random.uniform(low = 0, high = 0.0001, size=(181,2))
+    Q2 = numpy.random.uniform(low = 0, high = 0.0001, size=(181,2))    
     
 def policy(state):
     q1 = Q1[state]
