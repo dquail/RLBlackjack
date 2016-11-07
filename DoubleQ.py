@@ -76,8 +76,8 @@ def learn(alpha, eps, numTrainingEpisodes):
             #blackjack.printPolicy(policy)
 
     
-    #print("Average total return so far: ", returnSum/numTrainingEpisodes)
-    """
+    print("Average total return so far: ", returnSum/numTrainingEpisodes)
+    
     fig = plt.figure()
     fig.suptitle('Learning rate for blackjack', fontsize = 14, fontweight = 'bold')
     ax = fig.add_subplot(111)
@@ -88,8 +88,8 @@ def learn(alpha, eps, numTrainingEpisodes):
     ax.set_ylabel('cumulative avg. return')
     ax.plot(evalSteps)
     plt.show()
-    """
-    #return returnSum/numTrainingEpisodes
+    
+    return returnSum/numTrainingEpisodes
 
 def simpleEvaluate(numEvaluationEpisodes):
     learn(0.0, 0.0, numEvaluationEpisodes)
@@ -119,11 +119,11 @@ def evaluate(numEvaluationEpisodes):
                 terminated = True
             
         returnSum = returnSum + G
-        """
+        
         if episodeNum % 10000 == 0 and episodeNum != 0:
             print("Average return so far: ", returnSum/episodeNum)
-        """
-    #print("Average total return so far: ", returnSum/numEvaluationEpisodes)
+        
+    print("Average total return so far: ", returnSum/numEvaluationEpisodes)
     return returnSum/numEvaluationEpisodes
 
 def runTests(numberOfTrainingRuns):
