@@ -7,7 +7,7 @@ Consider the task of winning the game of Blackjack. For each possible state of w
 We will use Reinforcement learning - DoubleQ learning with tabular lookup to find an optimal policy for the player to follow. Doing so will maximize their chances of winning each hand.
 
 ##Usage
-There are 3 main files:
+There are 2 main files:
 
 1. [blackjack.py](blackjack.py)
   * This simulates games of blackjack for our agent to learn from.
@@ -32,4 +32,4 @@ The following are graphs created when running several million episodes with a sm
 ![alt text](Policy.png "Optimal actions")
 
 ##Reference
-This originated from a programming assignment from CMPUT 609 taught by Rich Sutton at the University of Alberta in October of 2016
+I adapted this from a programming assignment from CMPUT 609 taught by Rich Sutton at the University of Alberta in October of 2016
