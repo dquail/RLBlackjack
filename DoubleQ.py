@@ -71,12 +71,12 @@ def learn(alpha, eps, numTrainingEpisodes):
         returnSum = returnSum + G
    
         if episodeNum % 10000 == 0 and episodeNum != 0:
-            #print("Average return so far: ", returnSum/episodeNum)
+            print("Average return so far: ", returnSum/episodeNum)
             evalSteps.append(returnSum/episodeNum)
             #blackjack.printPolicy(policy)
 
     
-    print("Average total return so far: ", returnSum/numTrainingEpisodes)
+    print("Learning complete. Agent will be successful at the rate of ", returnSum/numTrainingEpisodes)
     
     fig = plt.figure()
     fig.suptitle('Learning rate for blackjack', fontsize = 14, fontweight = 'bold')
@@ -158,4 +158,23 @@ def printStateActionValues():
         print("Hold: " + str(Q1[index, 1]))
         print("==========")
         print("")
+
+def printPolicy(policy):
+    global playerSum, dealerCard, usableAce
+    for usableAce in [True, False]:
+        print()
+        print("" if usableAce else " No", "Usable Ace:")
+        for playerSum in range(20, 11, -1):
+            for dealerCard in range(1,11):
+                print("S" if policy(blackjack.encode())==0 else "H", end=' ')
+            print(playerSum)
+        for dealerCard in range(1,11): print(dealerCard, end=' ')
+        print() 
+
+
+def printPolicyToFile(policy):
+    with open('policy.txt', 'w') as fp:
+        sys.stdout = fp
+        printPolicy(policy)
+        sys.stdout = sys.__stdout__
 

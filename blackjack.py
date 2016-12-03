@@ -99,21 +99,3 @@ def dealerPlaySample():
     elif dealerSum > playerSum: return -1, False
     else: return 0, False
 
-def printPolicy(policy):
-    global playerSum, dealerCard, usableAce
-    for usableAce in [True, False]:
-        print()
-        print("" if usableAce else " No", "Usable Ace:")
-        for playerSum in range(20, 11, -1):
-            for dealerCard in range(1,11):
-                print("S" if policy(encode())==0 else "H", end=' ')
-            print(playerSum)
-        for dealerCard in range(1,11): print(dealerCard, end=' ')
-        print() 
-        
-
-def printPolicyToFile(policy):
-    with open('policy.txt', 'w') as fp:
-        sys.stdout = fp
-        printPolicy(policy)
-        sys.stdout = sys.__stdout__
